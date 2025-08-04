@@ -5,10 +5,10 @@ import cardFront from "../src/assets/images/bg-card-front.png";
 import cardLogo from "../src/assets/images/card-logo.svg";
 
 function App() {
-  const cvcNum = "000";
-  const cardNum = "0000 0000 0000 0000";
-  const cardName = "JANE APPLESEED";
-  const expDate = "00/00";
+  const [cvcNum, setCVC] = useState("000");
+  const [cardNum, setNum] = useState("0000 0000 0000 0000");
+  const [cardName, setName] = useState("JANE APPLESEED");
+  const [expDate, setDate] = useState("00/00");
   return (
     <div className="h-screen">
       <div className="flex flex-col h-full border border-green-500 ">
@@ -17,22 +17,22 @@ function App() {
             style={{ backgroundImage: `url(${cardBack})` }}
             className="absolute w-[300px] top-10 right-5 h-44 bg-center bg-cover rounded-lg"
           >
-            <div className="w-2/10 relative top-18 h-7 left-55 flex items-end justify-end pr-2">
+            <div className="w-2/10 relative top-18 h-7 left-55 flex items-end justify-end pr-2 text-white tracking-widest">
               <p>{cvcNum}</p>
             </div>
           </div>
           <div
             style={{ backgroundImage: `url(${cardFront})` }}
-            className="absolute w-[300px] top-40 left-5 h-44 bg-center bg-cover rounded-lg p-4"
+            className="absolute w-[300px] top-40 left-5 h-44 bg-center bg-cover rounded-lg p-5"
           >
-            <div className="h-5/10 w-full">
-              <img src={cardLogo} alt="" className="h-[40px]" />
+            <div className="h-6/10 w-full">
+              <img src={cardLogo} alt="" className="h-[35px]" />
             </div>
-            <div className="w-full h-5/10 flex flex-col justify-between pb-2">
-              <p className="w-full text-2xl">{cardNum}</p>
+            <div className="w-full h-4/10 flex flex-col justify-between text-white tracking-widest">
+              <p className="w-full text-xl">{cardNum}</p>
               <div className="flex justify-between">
-                <p>{cardName}</p>
-                <p>{expDate}</p>
+                <p className="text-xs">{cardName}</p>
+                <p className="text-xs">{expDate}</p>
               </div>
             </div>
           </div>
@@ -62,37 +62,38 @@ function App() {
             />
           </div>
 
-          <div className="w-full">
-            <div className="w-full flex">
-              <label htmlFor="" className="w-1/2">
-                EXP.DATE(MM/YY)
+          <div className="w-full flex gap-2">
+            <div className="w-1/2">
+              <label htmlFor="month">EXP. DATE(MM/YY)</label>
+              <label htmlFor="year" className="sr-only">
+                Year Expiry Date
               </label>
-              <label htmlFor="cvc" className="w-1/2">
-                CVC
-              </label>
+              <div className="flex gap-2">
+                <input
+                  type="number"
+                  className="w-1/2 border border-purple-500 rounded-lg h-12 px-2"
+                  id="month"
+                  placeholder="MM"
+                />
+                <input
+                  type="number"
+                  className="w-1/2 border border-purple-500 rounded-lg h-12 px-2"
+                  id="year"
+                  placeholder="YY"
+                />
+              </div>
             </div>
-            <div className="w-full flex">
-              <input
-                type="number"
-                id="month"
-                placeholder="MM"
-                className="w-1/4 border border-purple-500 rounded-lg h-12 px-2"
-              />
-              <input
-                type="number"
-                id="year"
-                placeholder="YY"
-                className="w-1/4 border border-purple-500 rounded-lg h-12 px-2"
-              />
+            <div className="w-1/2">
+              <label htmlFor="cvc">CVC</label>
               <input
                 type="number"
                 id="cvc"
+                className="w-full border border-purple-500 rounded-lg h-12 px-2"
                 placeholder="e.g. 123"
-                className="w-2/4 border border-purple-500 rounded-lg h-12 px-2"
               />
             </div>
           </div>
-          <button className="w-full bg-purple-300 rounded-lg py-4.5">
+          <button className="w-full bg-purple-300 rounded-lg py-4 font-bold text-xl">
             Confirm
           </button>
         </main>

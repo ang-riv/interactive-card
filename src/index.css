@@ -9,3 +9,13 @@
 .attribution a {
   color: hsl(228, 45%, 44%);
 }
+
+label {
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: small;
+}
+
+input {
+  margin-top: 5px;
+}
