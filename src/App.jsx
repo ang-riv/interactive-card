@@ -2,22 +2,40 @@ import { useState } from "react";
 import mobile from "../src/assets/images/bg-main-mobile.png";
 import cardBack from "../src/assets/images/bg-card-back.png";
 import cardFront from "../src/assets/images/bg-card-front.png";
+import cardLogo from "../src/assets/images/card-logo.svg";
 
 function App() {
+  const cvcNum = "000";
+  const cardNum = "0000 0000 0000 0000";
+  const cardName = "JANE APPLESEED";
+  const expDate = "00/00";
   return (
     <div className="h-screen">
       <div className="flex flex-col h-full border border-green-500 ">
         <div className="w-full h-6/10">
-          <img
-            src={cardBack}
-            className="absolute w-8/10 max-w-[300px] top-10 right-5 h-44"
-            alt=""
-          />
-          <img
-            src={cardFront}
-            className="absolute w-8/10 max-w-[300px] top-40 left-5 h-44"
-            alt=""
-          />
+          <div
+            style={{ backgroundImage: `url(${cardBack})` }}
+            className="absolute w-[300px] top-10 right-5 h-44 bg-center bg-cover rounded-lg"
+          >
+            <div className="w-2/10 relative top-18 h-7 left-55 flex items-end justify-end pr-2">
+              <p>{cvcNum}</p>
+            </div>
+          </div>
+          <div
+            style={{ backgroundImage: `url(${cardFront})` }}
+            className="absolute w-[300px] top-40 left-5 h-44 bg-center bg-cover rounded-lg p-4"
+          >
+            <div className="h-5/10 w-full">
+              <img src={cardLogo} alt="" className="h-[40px]" />
+            </div>
+            <div className="w-full h-5/10 flex flex-col justify-between pb-2">
+              <p className="w-full text-2xl">{cardNum}</p>
+              <div className="flex justify-between">
+                <p>{cardName}</p>
+                <p>{expDate}</p>
+              </div>
+            </div>
+          </div>
           <img src={mobile} alt="" className="w-full h-full" />
         </div>
         <main className="w-full h-full px-5 pt-28 flex flex-col justify-around">
